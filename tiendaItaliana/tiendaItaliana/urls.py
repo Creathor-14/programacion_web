@@ -20,7 +20,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('', include('core.urls')),
-    path('crud/', include('crud.urls')),
+    #path('crud/', include('crud.urls')),
     path('admin/', admin.site.urls),
 ]
 

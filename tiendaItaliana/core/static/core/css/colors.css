@@ -34,6 +34,9 @@
     --fg: var(--clr-light);/*foreground = primer plano*/
     --bg: var(--crl-dark);
 }
+body{
+    background-color: #2C3333;
+}
 .colors-top-bottom{
     background-color: var(--bg-top-bottom);
     transition: color 1.7s ease-in-out, background-color 1.2s ease-in-out;
