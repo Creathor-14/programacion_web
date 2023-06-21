@@ -1,0 +1,45 @@
+{% extends 'crud/base.html' %}
+
+{% load static %}
+
+{% block title %}{{videojuego.idVideogame}}{% endblock %}
+
+{% block main_content %}
+<div class="container my-4">
+    <div class="row mb-3">
+        <h1>SKU: {{videojuego.idVideogame}}</h1>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 ">
+            {% if videojuego.image %}
+            <img src="{{videojuego.image.url}}" alt="{{videojuego.title}}">
+            {% else %}
+            <img src="{% static 'crud/img/image_not_found.jpg' %}" alt="{{v.title}}">
+            {% endif  %}
+        </div>
+        <hr class="d-md-none">    
+        <div class="col-lg-8">
+            <ul class="list-unstyled">
+                <li class="mb-2">Título: <p class="fw-bold">{{videojuego.title}}</p></li>
+                <li class="mb-2">Desarrollado por: <p class="fw-bold">{{videojuego.studio}}</p></li>
+                <li class="mb-2">Plataforma: <p class="fw-bold">{{videojuego.platform}}</p></li>
+                <li class="mb-2">Valor: <p class="fw-bold">${{videojuego.value}}</p></li>
+                <li class="mb-2">Stock: <p class="fw-bold">{{videojuego.stock}}</p></li>
+                <li class="mb-2 text-muted fst-italic">Registrado: <p class="fw-bold">{{videojuego.created_at}}</p></li>
+                <li class="mb-2 text-muted fst-italic">Última actualización: <p class="fw-bold">{{videojuego.updated_at}}</p></li>
+            </ul>
+            <div class="row">
+                <div class="col-2">
+                    <a class="btn btn-outline-primary" href="{% url 'videogame-list' %}">Volver</a>
+                </div>
+                <div class="col-2">
+                    <a class="btn btn-outline-secondary" href="">Editar</a>
+                </div>
+                <div class="col-2">
+                    <a class="btn btn-outline-danger" href="">Eliminar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
