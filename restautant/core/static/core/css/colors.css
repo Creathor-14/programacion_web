@@ -1,0 +1,174 @@
+:root,[new-data-bs-theme="light"]{
+    --clr-light:#FFF9DE;
+    --crl-dark:#67d4f5;
+    --clr-primary:#5350ff;
+    --clr-secondary:#FFD3B0;
+    --clr-accent:#f54141;
+    --clr-accent2:#440a0a;
+
+    --bg-top-bottom:#c6cddc;
+    --bg-middle:#fefefe;
+
+    --text-top: black;
+    --text-middle: black;
+    --text-bottom:black;
+
+    --fg: var(--clr-light);/*foreground = primer plano*/
+    --bg: var(--crl-dark);
+}
+
+[new-data-bs-theme="dark"]{
+    --clr-light:#CBE4DE;
+    --crl-dark:#2C3333;
+    --clr-primary:#2E4F4F;
+    --clr-secondary:#0E8388;
+    --clr-accent:#ff7750;
+    --clr-accent2:rgba(255, 193, 7, 1);
+
+    --bg-top-bottom: var(--crl-dark);
+    --bg-middle:var(--clr-primary);
+
+    --text-top: white;
+    --text-middle: white;
+    --text-bottom:rgba(255, 193, 7, 1);
+    --fg: var(--clr-light);/*foreground = primer plano*/
+    --bg: var(--crl-dark);
+}
+body{
+    background-color: #2C3333;
+}
+.colors-top-bottom{
+    background-color: var(--bg-top-bottom);
+    transition: color 1.7s ease-in-out, background-color 1.2s ease-in-out;
+}
+.colors-middle{
+    background: var(--bg-middle);
+    color: var(--text-middle);
+    transition: background-color 1.2s ease-in-out;
+}
+.color-text-bottom{
+    color: var(--clr-accent2);
+    transition: color 1.7s ease-in-out, background-color 1.2s ease-in-out;
+}
+.colors-top-bottom[formato=dark]{
+    background-color: var(--bg-top-bottom);
+    transition: color 0.7s ease-in-out, background-color 0.2s ease-in-out;
+}
+.colors-middle[formato=dark]{
+    background: linear-gradient(125deg, var(--clr-primary) 25%, var(--clr-accent) 100%);
+    color: var(--text-middle);
+    transition: color 1s ease-in-out;
+}
+
+
+
+.logo{
+    margin-right: 2rem;
+    display: flex;
+}
+.logo h1{
+    font-family: "cabin sketch";
+    color: var(--text-top);
+    margin-top: 10px;
+    transition: color 1s ease-in-out;
+}
+.logo img, .footer-img{
+    height: 130px;
+}
+.new-nav-link{
+    font-size: 1.1rem;
+    font-family: "bebas neue";
+    padding: 0.5rem 0em;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    display: block;
+    color: var(--text-top);
+    text-decoration: none;
+    background: none;
+    border: 0;
+    transition: color 1s ease-in-out, background-color 0.15s ease-in-out;
+}
+.new-nav-link:hover{
+    text-decoration: none; 
+}
+.diseño-nav-item{
+    padding-inline: 0.5rem;
+    padding-block: 0rem;
+}
+.diseño-nav-item:hover{
+    background-color: var(--bg-middle);
+    border-radius: 0.5rem;
+}
+
+.div-buttons{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.imagen{
+    height: 91vh;
+    width: 45vw;
+    margin-block: 4vh;
+}
+
+#modoOscuro{
+    font-size: 200%;
+    cursor: pointer;
+    color:yellow;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.diseño-header{
+    padding: 0rem 1rem;
+    border-radius: 0 0 10px 10px;
+    margin: 0rem 2rem;
+}
+.diseño-footer{
+    padding: 0rem 0rem;
+    border-radius: 10px 10px;
+    margin: 1rem 20px 0rem 1rem;
+}
+.bi-arrow-bar-up{
+    font-size: 200%;
+    cursor: pointer;
+}
+
+.new-nav-link-bottom{
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    display: block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    background: none;
+    border: 0;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+.datos-extra{
+    display: flex;
+    margin-right: 4rem;
+    
+}
+.inline-block-bg {
+    font-family: "bebas neue";
+    display: inline-block;
+    background: var(--bg-middle);
+    color: var(--text-middle);
+    transition: color 1s ease-in-out;
+}
+.footer-right-part{
+    display: flex;
+    text-decoration: none;
+    justify-content: center;
+    align-content: center;
+}
+.zzz{
+    background-color: var(--bg-top-bottom);
+}
