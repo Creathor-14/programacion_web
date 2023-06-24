@@ -138,7 +138,7 @@ function validarContraseña(){
 
 
 document.getElementById("mostrar_datos").addEventListener("click", function() {
-    event.preventDefault();
+    //event.preventDefault();
     var nombre = document.getElementById("nombre").value;
     var apellidoPaterno = document.getElementById("paterno").value;
     var apellidoMaterno = document.getElementById("materno").value;

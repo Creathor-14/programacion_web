@@ -7,8 +7,7 @@ class Formulario(models.Model):
     ap_materno=models.CharField(max_length=15)
     rut=models.CharField(max_length=12)
     email=models.EmailField()
-    telefono=models.CharField(max_length=9)
-    comentario=models.CharField(max_length=300)
+    comentario=models.CharField(max_length=500)
     def __str__(self):
         return "rut: "+self.rut
     

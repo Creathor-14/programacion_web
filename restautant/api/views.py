@@ -7,3 +7,6 @@ from crud.models import Plato
 class PlatoViewSet(viewsets.ModelViewSet):
     queryset = Plato.objects.all()
     serializer_class = PlatoSerializer
+
+
+
