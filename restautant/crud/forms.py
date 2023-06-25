@@ -29,4 +29,21 @@ class FormularioForm(ModelForm):
             'email':forms.TextInput(attrs={'class':'form-control'}),
             'comentarios':forms.TextInput(attrs={'class':'form-control'})
         }
-
+class PlatoForm(ModelForm):
+    class Meta:
+        model = Plato
+        fields = [
+            'nombre',
+            'categoria',
+            'precio'
+        ]
+        labels = {
+            'nombre' : 'Nombre', 
+            'categoria': 'Categoria',
+            'precio': 'Precio'
+        }
+        widgets = {
+            'nombre':forms.TextInput(attrs={'class':'form-control'}),
+            'categoria':forms.TextInput(attrs={'class':'form-control'}),
+            'precio':forms.TextInput(attrs={'class':'form-control'}),
+        }
