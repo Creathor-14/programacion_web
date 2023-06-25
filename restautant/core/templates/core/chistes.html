@@ -1,0 +1,19 @@
+{% extends 'core/base.html' %}
+{% block title %}CHISTE{% endblock %}
+{% load static %}
+{% block extracss %}<link rel="stylesheet" href="{% static 'core/css/estilo-alterno.css' %}">{%endblock %}
+<!---------------------------------------------------------------------------------------------------------------------->
+{% block content %}    
+    <section class="contenido">
+        <div id="button-container">
+            <button id="btn-joke" class="move-btn btn btn-primary ">Obtener Chiste</button>
+        </div>
+        <div id="joke-container" class="joke-box"></div>
+        
+    </section>
+{% endblock %}
+<!---------------------------------------------------------------------------------------------------------------------->
+
+<!---------------------------------------------------------------------------------------------------------------------->
+{% block extra_js %}<script src="{% static 'core/js/chistes.js' %}"></script>{% endblock %}    
+

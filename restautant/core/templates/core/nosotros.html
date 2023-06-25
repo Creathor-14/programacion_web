@@ -1,0 +1,18 @@
+{% extends 'core/base.html' %}
+{% block title %}NOSOTROS{% endblock %}
+{% load static %}
+{% block extracss %}<link rel="stylesheet" href="{% static 'core/css/nosotros.css' %}">{%endblock %}
+<!---------------------------------------------------------------------------------------------------------------------->
+{% block content %}
+<!---------------------------------------------------------------------------------------------------------------------->
+    
+<div class="us_card mar" nombre="Martin">
+    <img src="{% static 'core/img/mar.jpg' %}" alt="Martin-Rees">
+</div>  
+
+<div class="us_card tom" nombre="Thomas">
+    <img src="{% static 'core/img/tom.jpg' %}" alt="Thomas-Quiroga">
+</div>        
+   
+<!---------------------------------------------------------------------------------------------------------------------->
+{% endblock %}
