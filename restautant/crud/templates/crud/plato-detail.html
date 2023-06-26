@@ -7,14 +7,14 @@
 {% block content %}
 <div class="container m-4">
     <div class="row mb-3">
-        <h1>SKU : {{plato.id}}</h1>
+        <h1>ID : {{plato.id}}</h1>
     </div>
     <div class="row">
         <div class="col-md-8">
             <ul class="list-unstyled">
-                <li class="mb-2">Nombre: <p class="fw-bold">{{plato.title}}</p></li>
-                <li class="mb-2">Categoria: <p class="fw-bold">{{plato.studio}}</p></li>
-                <li class="mb-2">Precio: <p class="fw-bold">{{plato.platform}}</p></li>
+                <li class="mb-2">Nombre: <p class="fw-bold">{{plato.nombre}}</p></li>
+                <li class="mb-2">Categoria: <p class="fw-bold">{{plato.categoria}}</p></li>
+                <li class="mb-2">Precio: <p class="fw-bold">{{plato.precio}}</p></li>
                 <li class="mb-2 text-muted fst-italic">Registrado: {{plato.created_at}}</li>
                 <li class="mb-2 text-muted fst-italic">Última actualización: {{plato.updated_at}}</li>
             </ul>
@@ -28,7 +28,7 @@
                 <div class="col-2">
                     <a class="btn btn-outline-danger modal-borrar" data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop"
-                    data-href="{% url 'videogame-delete' plato_id=plato.id %}">
+                    data-href="{% url 'plato-delete' plato_id=plato.id %}">
                     Eliminar
                 </a>
                 </div>
@@ -47,7 +47,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <h6 class="modal-title">Estas seguro que deseas eliminar el videojuego seleccionado?<br>Esta acción no se puede deshacer.</h6>
+                <h6 class="modal-title">Estas seguro que deseas eliminar el plato seleccionado?<br>Esta acción no se puede deshacer.</h6>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancelar</button>
@@ -59,3 +59,11 @@
 
 {% endblock %}
 
+{% block extra_js %}
+<script>
+    $('.modal-borrar').on('click',function(){
+        const href = $(this).attr('data-href');
+        $('#confirmar-borrar').attr('href',href);
+    });
+</script>
+{% endblock %}
