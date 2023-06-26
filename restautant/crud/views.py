@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse, redirect, reverse
+from django.shortcuts import render, HttpResponse, redirect, reverse, get_object_or_404
 from .models import *
 from .forms import *
 
@@ -61,9 +61,7 @@ def plato_detail(request, plato_id):
         return redirect(reverse('platos') + '?FAIL')
     
 def plato_delete(request,plato_id):
-    try:
-        plato = Plato.objects.get(id=plato_id)
-        plato.delete()
-        return redirect(reverse('platos') + '?DELETED')
-    except:
-        return redirect(reverse('platos') + '?FAIL')
+    plato = get_object_or_404(Plato, id=plato_id)
+    plato.delete()
+    return redirect(reverse('platos') )
+    

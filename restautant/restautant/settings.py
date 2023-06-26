@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     "core",
     "crud",
     "rest_framework",
-    "coreapi",
     "api",
 ]
 

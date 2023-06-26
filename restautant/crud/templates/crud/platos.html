@@ -74,14 +74,12 @@
                                 <i class="fa-solid fa-pencil"></i>
                             </span>
                         </a>
-                        <a class="text-decoration-none modal-borrar" data-bs-toggle="modal"
-                            data-bs-target="#staticBackdrop"
-                            data-href="{% url 'plato-delete' plato_id=plato.id %}">
+                        <a class="text-decoration-none" 
+                            href="{% url 'plato-delete' plato_id=plato.id %}">
                             <span class="text-danger fs-2">
                                 <i class="fa-solid fa-trash"></i>
                             </span>
                         </a>
-
                     </td>
                 </tr>
                 {% endfor %}
@@ -91,32 +89,10 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Mensajes</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <h6 class="modal-title">Estas seguro que deseas eliminar el plato seleccionado?<br>Esta acción no se puede deshacer.</h6>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancelar</button>
-                <a href="#" id="confirmar-borrar" class="btn btn-danger">Si</a>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 {% endblock %}
 
 {% block extra_js %}
-<script>
-    $('.modal-borrar').on('click',function(){
-        const href = $(this).attr('data-href');
-        $('#confirmar-borrar').attr('href',href);
-    });
-</script>
+
 {% endblock %}
