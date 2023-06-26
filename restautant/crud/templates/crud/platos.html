@@ -2,10 +2,127 @@
 
 {% load static %}
 
-{% block title %}{{videojuego.idVideoGame}}{% endblock %}
+{% block title %}Platos{% endblock %}
 
-{% block main_content %}
-<p>platos exoticos xd</p>
+{% block content %}
+<div class="container my-2 p-2 bg-dark text-white text-center rounded">
+    <h1>Administrador de Platos</h1>
+</div>
+
+<div class="container my-2">
+    <div class="row">
+        {% if 'OK' in request.GET %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Ohh hell yeah!</strong> Plato registrado satisfactoriamente!!!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+        {% if 'FAIL' in request.GET %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Holy guacamole!</strong> Se produjo un error, y no podemos atender a tu solicitud.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+        {% if 'NO_EXISTS' in request.GET %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Holy guacamole!</strong> No se encontró el plato indicado en nuestros registros.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+        {% if 'UPDATED' in request.GET %}
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            <strong>Holy guacamole!</strong> Plato actualizado correctamente!!!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+        {% if 'DELETED' in request.GET %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Holy guacamole!</strong> Plato eliminado correctamente!!!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<div class="container-fluid my-2">
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Categoria</th>
+                    <th>Precio</th>
+                    <th>Imagen</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for v in videojuegos %}
+                <tr>
+                    <td>{{v.idVideoGame}}</td>
+                    <td>{{v.title}}</td>
+                    <td>
+                        <a class=" text-dark" href="/crud/videogames/platforms/{{v.platform.id}}">{{v.platform}}</a>
+                    </td>
+                    <td>
+                        <a class=" text-dark" href="/crud/videogames/studio/{{v.studio}}">{{v.studio}}</a>
+                    </td>
+                    <td>{{v.value}}</td>
+                    <td>{{v.stock}}</td>
+                    <td>
+                        {% if v.image %}
+                        <img class="img-videogame" src="{{v.image.url}}" alt="{{v.title}}">
+                        {% else%}
+                        <img class="img-videogame" src="{% static 'crud/img/image_not_found.jpg' %}" alt="INF">
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a class="text-decoration-none" href="{% url 'videogame-detail' videogame_id=v.idVideoGame %}">
+                            <span class="text-primary fs-2">
+                                <i class="fa-solid fa-eye"></i>
+                            </span>
+                        </a>
+                        <a class="text-decoration-none" href="{% url 'videogame-edit' videogame_id=v.idVideoGame %}">
+                            <span class="text-warning fs-2">
+                                <i class="fa-solid fa-pencil"></i>
+                            </span>
+                        </a>
+                        <a class="text-decoration-none modal-borrar" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop"
+                            data-href="{% url 'videogame-delete' videogame_id=v.idVideoGame %}">
+                            <span class="text-danger fs-2">
+                                <i class="fa-solid fa-trash"></i>
+                            </span>
+                        </a>
+
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Mensajes</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h6 class="modal-title">Estas seguro que deseas eliminar el videojuego seleccionado?<br>Esta acción no se puede deshacer.</h6>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancelar</button>
+                <a href="#" id="confirmar-borrar" class="btn btn-danger">Si</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
 
