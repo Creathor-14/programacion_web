@@ -37,14 +37,33 @@ def plato_update(request,plato_id):
         form = PlatoForm(instance=plato)
 
         if request.method == 'POST':
-            form = PlatoForm(request.POST, request.FILES, instance=videojuego)
+            form = PlatoForm(request.POST, request.FILES, instance=plato)
             if form.is_valid():
                 form.save()
-                return redirect(reverse('videogames') + '?UPDATED')
+                return redirect(reverse('platos') + '?UPDATED')
             else:
-                return redirect(reverse('videogame-edit') + videogame_id) 
+                return redirect(reverse('platos-edit') + plato_id) 
 
         context = {'form':form}
-        return render(request,'crud/videogame-edit.html',context)
+        return render(request,'crud/plato-edit.html',context)
     except:
-        return redirect(reverse('videogames') + '?NO_EXISTS')
+        return redirect(reverse('platos') + '?NO_EXISTS')
+
+def plato_detail(request, plato_id):
+    try:
+        plato = Plato.objects.get(id=plato_id)
+        if plato:
+            context = {'plato':plato}
+            return render(request,'crud/plato-detail.html',context)
+        else:
+            return redirect(reverse('platos') + '?lala')
+    except:
+        return redirect(reverse('platos') + '?FAIL')
+    
+def plato_delete(request,plato_id):
+    try:
+        plato = Plato.objects.get(id=plato_id)
+        plato.delete()
+        return redirect(reverse('platos') + '?DELETED')
+    except:
+        return redirect(reverse('platos') + '?FAIL')

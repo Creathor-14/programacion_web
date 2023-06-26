@@ -53,44 +53,30 @@
                     <th>Nombre</th>
                     <th>Categoria</th>
                     <th>Precio</th>
-                    <th>Imagen</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                {% for v in videojuegos %}
+                {% for plato in platos %}
                 <tr>
-                    <td>{{v.idVideoGame}}</td>
-                    <td>{{v.title}}</td>
+                    <td>{{plato.id}}</td>
+                    <td>{{plato.nombre}}</td>
+                    <td>{{plato.categoria}}</td>
+                    <td>{{plato.precio}}</td>
                     <td>
-                        <a class=" text-dark" href="/crud/videogames/platforms/{{v.platform.id}}">{{v.platform}}</a>
-                    </td>
-                    <td>
-                        <a class=" text-dark" href="/crud/videogames/studio/{{v.studio}}">{{v.studio}}</a>
-                    </td>
-                    <td>{{v.value}}</td>
-                    <td>{{v.stock}}</td>
-                    <td>
-                        {% if v.image %}
-                        <img class="img-videogame" src="{{v.image.url}}" alt="{{v.title}}">
-                        {% else%}
-                        <img class="img-videogame" src="{% static 'crud/img/image_not_found.jpg' %}" alt="INF">
-                        {% endif %}
-                    </td>
-                    <td>
-                        <a class="text-decoration-none" href="{% url 'videogame-detail' videogame_id=v.idVideoGame %}">
+                        <a class="text-decoration-none" href="{% url 'plato-detail' plato_id=plato.id %}">
                             <span class="text-primary fs-2">
                                 <i class="fa-solid fa-eye"></i>
                             </span>
                         </a>
-                        <a class="text-decoration-none" href="{% url 'videogame-edit' videogame_id=v.idVideoGame %}">
+                        <a class="text-decoration-none" href="{% url 'plato-edit' plato_id=plato.id %}">
                             <span class="text-warning fs-2">
                                 <i class="fa-solid fa-pencil"></i>
                             </span>
                         </a>
                         <a class="text-decoration-none modal-borrar" data-bs-toggle="modal"
                             data-bs-target="#staticBackdrop"
-                            data-href="{% url 'videogame-delete' videogame_id=v.idVideoGame %}">
+                            data-href="{% url 'plato-delete' plato_id=plato.id %}">
                             <span class="text-danger fs-2">
                                 <i class="fa-solid fa-trash"></i>
                             </span>
@@ -114,7 +100,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <h6 class="modal-title">Estas seguro que deseas eliminar el videojuego seleccionado?<br>Esta acción no se puede deshacer.</h6>
+                <h6 class="modal-title">Estas seguro que deseas eliminar el plato seleccionado?<br>Esta acción no se puede deshacer.</h6>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancelar</button>
