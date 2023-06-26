@@ -13,31 +13,31 @@
     <div class="row">
         {% if 'OK' in request.GET %}
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Ohh hell yeah!</strong> Plato registrado satisfactoriamente!!!
+            <strong>Plato registrado satisfactoriamente!!!</strong> 
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         {% endif %}
         {% if 'FAIL' in request.GET %}
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>Holy guacamole!</strong> Se produjo un error, y no podemos atender a tu solicitud.
+            <strong>Se produjo un error, y no podemos atender a tu solicitud.</strong> 
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         {% endif %}
         {% if 'NO_EXISTS' in request.GET %}
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>Holy guacamole!</strong> No se encontró el plato indicado en nuestros registros.
+            <strong>No se encontró el plato indicado en nuestros registros.</strong> 
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         {% endif %}
         {% if 'UPDATED' in request.GET %}
         <div class="alert alert-info alert-dismissible fade show" role="alert">
-            <strong>Holy guacamole!</strong> Plato actualizado correctamente!!!
+            <strong>Plato actualizado correctamente!!!</strong> 
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         {% endif %}
         {% if 'DELETED' in request.GET %}
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>Holy guacamole!</strong> Plato eliminado correctamente!!!
+            <strong>Plato eliminado correctamente!!!</strong> 
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         {% endif %}
@@ -88,11 +88,7 @@
     </div>
 </div>
 
-<!-- Modal -->
 
 
-{% endblock %}
-
-{% block extra_js %}
 
 {% endblock %}

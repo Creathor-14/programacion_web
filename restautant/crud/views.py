@@ -63,5 +63,5 @@ def plato_detail(request, plato_id):
 def plato_delete(request,plato_id):
     plato = get_object_or_404(Plato, id=plato_id)
     plato.delete()
-    return redirect(reverse('platos') )
+    return redirect(reverse('platos') + '?DELETED')
     

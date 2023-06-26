@@ -18,3 +18,4 @@ class Plato(models.Model):
     #imagen=models.ImageField(upload_to='productos')
     def __str__(self):
         return self.nombre
+#principal, postre, bebestibles
