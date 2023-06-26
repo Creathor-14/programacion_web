@@ -4,19 +4,13 @@
 
 {% block title%}Actualización{% endblock %}
 
-{% block main_content %}
+{% block content %}
 <div class="container my-2 py-3 bg-dark text-white text-center rounded">
     <h1>Formulario Actualización Platos</h1>
 </div>
 <div class="container my-2 p-5">
     <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <div class="form-group mb-3">
-            <label for="id" class="fw-bold">ID</label>
-            <div class="input-group">
-                {{form.id}}
-            </div>
-        </div>
         <div class="form-group mb-3">
             <label for="nombre" class="fw-bold">Nombre</label>
             <div class="input-group">
