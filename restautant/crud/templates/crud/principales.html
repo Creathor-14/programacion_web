@@ -65,7 +65,9 @@
                 <tr>
                     <td>{{principal.id}}</td>
                     <td>{{principal.nombre}}</td>
-                    <td>{{principal.categoria}}</td>
+                    <td> 
+                        <a class= "text-decoration-none" href="/crud/principales/categoria/{{principal.categoria}}">{{principal.categoria}}</a>
+                    </td>
                     <td>{{principal.precio}}</td>
                     <td>
                         {% if principal.image %}

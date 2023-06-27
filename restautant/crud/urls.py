@@ -8,16 +8,19 @@ urlpatterns = [
     path('principales/detail/<str:principal_id>', principal_detail, name="principal-detail"),
     path('principales/edit/<str:principal_id>', principal_update, name="principal-edit"),
     path('principales/new/', principal_new, name="principal-new"),
+    path('principales/categoria/<categoria>', principal_by_categoria, name="principal-categoria"),
 
     path('postres/', postre_list, name="postres"),    
     path('postres/<str:postre_id>', postre_delete, name="postre-delete"),
     path('postres/detail/<str:postre_id>', postre_detail, name="postre-detail"),
     path('postres/edit/<str:postre_id>', postre_update, name="postre-edit"),
     path('postres/new/', postre_new, name="postre-new"),
+    path('postres/categoria/<categoria>', postre_by_categoria, name="postre-categoria"),
 
     path('bebestibles/', bebestible_list, name="bebestibles"),    
     path('bebestibles/<str:bebestible_id>', bebestible_delete, name="bebestible-delete"),
     path('bebestibles/detail/<str:bebestible_id>', bebestible_detail, name="bebestible-detail"),
     path('bebestibles/edit/<str:bebestible_id>', bebestible_update, name="bebestible-edit"),
     path('bebestibles/new/', bebestible_new, name="bebestible-new"),
+    path('bebestibles/categoria/<categoria>', bebestible_by_categoria, name="bebestible-categoria"),
 ]

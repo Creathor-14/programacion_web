@@ -10,6 +10,17 @@ def principal_list(request):
     context = {'principales': Principal.objects.all()}
     return render(request,'crud/principales.html',context)
 
+def principal_by_categoria(request, categoria):
+    try:
+        principales = Principal.objects.filter(categoria=categoria)
+        if principales:
+            context = {'principales':principales}
+            return render(request,'crud/principales.html',context)
+        else:
+            return redirect(reverse('principales') + '?FAIL')
+    except:
+        return redirect(reverse('principales') + '?FAIL')
+
 def principal_new(request):
     if request.method == 'POST':
         form = PrincipalForm(request.POST, request.FILES)
@@ -75,6 +86,17 @@ def postre_list(request):
     context = {'postres': Postre.objects.all()}
     return render(request,'crud/postres.html',context)
 
+def postre_by_categoria(request, categoria):
+    try:
+        postres = Postre.objects.filter(categoria=categoria)
+        if postres:
+            context = {'postres':postres}
+            return render(request,'crud/postres.html',context)
+        else:
+            return redirect(reverse('postres') + '?FAIL')
+    except:
+        return redirect(reverse('postres') + '?FAIL')
+
 def postre_new(request):
     if request.method == 'POST':
         form = PostreForm(request.POST, request.FILES)
@@ -138,6 +160,17 @@ def root(request):
 def bebestible_list(request):
     context = {'bebestibles': Bebestible.objects.all()}
     return render(request,'crud/bebestibles.html',context)
+
+def bebestible_by_categoria(request, categoria):
+    try:
+        bebestibles = Bebestible.objects.filter(categoria=categoria)
+        if bebestibles:
+            context = {'bebestibles':bebestibles}
+            return render(request,'crud/bebestibles.html',context)
+        else:
+            return redirect(reverse('bebestibles') + '?FAIL')
+    except:
+        return redirect(reverse('bebestibles') + '?FAIL')
 
 def bebestible_new(request):
     if request.method == 'POST':

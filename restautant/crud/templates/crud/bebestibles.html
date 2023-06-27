@@ -65,7 +65,9 @@
                 <tr>
                     <td>{{bebestible.id}}</td>
                     <td>{{bebestible.nombre}}</td>
-                    <td>{{bebestible.categoria}}</td>
+                    <td> 
+                        <a class= "text-decoration-none" href="/crud/bebestibles/categoria/{{bebestible.categoria}}">{{bebestible.categoria}}</a>
+                    </td>
                     <td>{{bebestible.precio}}</td>
                     <td>
                         {% if bebestible.image %}

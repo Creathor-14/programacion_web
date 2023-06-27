@@ -65,7 +65,9 @@
                 <tr>
                     <td>{{postre.id}}</td>
                     <td>{{postre.nombre}}</td>
-                    <td>{{postre.categoria}}</td>
+                    <td> 
+                        <a class= "text-decoration-none" href="/crud/postres/categoria/{{postre.categoria}}">{{postre.categoria}}</a>
+                    </td>
                     <td>{{postre.precio}}</td>
                     <td>
                         {% if postre.image %}
