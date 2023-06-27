@@ -29,9 +29,9 @@ class FormularioForm(ModelForm):
             'email':forms.TextInput(attrs={'class':'form-control'}),
             'comentarios':forms.TextInput(attrs={'class':'form-control'})
         }
-class PlatoForm(ModelForm):
+class PrincipalForm(ModelForm):
     class Meta:
-        model = Plato
+        model = Principal
         fields = [
             'nombre',
             'categoria',

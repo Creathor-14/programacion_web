@@ -1,13 +1,13 @@
 from rest_framework import serializers
-from crud.models import Plato
+from crud.models import Principal
 
 from rest_framework import serializers
 from crud.models import Formulario 
 
 
-class PlatoSerializer(serializers.ModelSerializer):
+class PrincipalSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Plato
+        model = Principal
         # fields = ("categoria","nombre")
         fields = '__all__'
 

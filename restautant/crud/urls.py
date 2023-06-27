@@ -3,9 +3,9 @@ from .views import *
 
 urlpatterns = [
     path('', root),
-    path('platos/', plato_list, name="platos"),    
-    path('platos/<str:plato_id>', plato_delete, name="plato-delete"),
-    path('platos/detail/<str:plato_id>', plato_detail, name="plato-detail"),
-    path('platos/edit/<str:plato_id>', plato_update, name="plato-edit"),
-    path('platos/new/', plato_new, name="plato-new"),
+    path('principales/', principal_list, name="principales"),    
+    path('principales/<str:principal_id>', principal_delete, name="principal-delete"),
+    path('principales/detail/<str:principal_id>', principal_detail, name="principal-detail"),
+    path('principales/edit/<str:principal_id>', principal_update, name="principal-edit"),
+    path('principales/new/', principal_new, name="principal-new"),
 ]

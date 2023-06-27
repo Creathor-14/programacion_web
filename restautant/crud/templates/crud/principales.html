@@ -2,19 +2,19 @@
 
 {% load static %}
 
-{% block title %}Platos{% endblock %}
+{% block title %}Principales{% endblock %}
 
 {% block content %}
 <div class="container my-2 p-2 bg-dark text-white text-center rounded">
-    <h1>Administrador de Platos</h1>
-    <a class="btn btn-outline-primary btn-lg btn-block" href="{% url 'plato-new' %}">Agregar Plato</a>
+    <h1>Administrador de Principales</h1>
+    <a class="btn btn-outline-primary btn-lg btn-block" href="{% url 'principal-new' %}">Agregar Principal</a>
 </div>
 
 <div class="container my-2">
     <div class="row">
         {% if 'OK' in request.GET %}
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Plato registrado satisfactoriamente!!!</strong> 
+            <strong>Principal registrado satisfactoriamente!!!</strong> 
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         {% endif %}
@@ -26,19 +26,19 @@
         {% endif %}
         {% if 'NO_EXISTS' in request.GET %}
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>No se encontró el plato indicado en nuestros registros.</strong> 
+            <strong>No se encontró el principal indicado en nuestros registros.</strong> 
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         {% endif %}
         {% if 'UPDATED' in request.GET %}
         <div class="alert alert-info alert-dismissible fade show" role="alert">
-            <strong>Plato actualizado correctamente!!!</strong> 
+            <strong>Principal actualizado correctamente!!!</strong> 
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         {% endif %}
         {% if 'DELETED' in request.GET %}
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>Plato eliminado correctamente!!!</strong> 
+            <strong>Principal eliminado correctamente!!!</strong> 
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         {% endif %}
@@ -61,32 +61,32 @@
                 </tr>
             </thead>
             <tbody>
-                {% for plato in platos %}
+                {% for principal in principales %}
                 <tr>
-                    <td>{{plato.id}}</td>
-                    <td>{{plato.nombre}}</td>
-                    <td>{{plato.categoria}}</td>
-                    <td>{{plato.precio}}</td>
+                    <td>{{principal.id}}</td>
+                    <td>{{principal.nombre}}</td>
+                    <td>{{principal.categoria}}</td>
+                    <td>{{principal.precio}}</td>
                     <td>
-                        {% if plato.image %}
-                        <img class="img-principal" src="{{plato.image.url}}" alt="{{plato.title}}">
+                        {% if principal.image %}
+                        <img class="img-view" src="{{principal.image.url}}" alt="{{principal.title}}">
                         {% else%}
-                        <img class="img-principal" src="{% static 'crud/img/image_not_found.jpg' %}" alt="INF">
+                        <img class="img-view" src="{% static 'crud/img/image_not_found.jpg' %}" alt="INF">
                         {% endif %}
                     </td>
                     <td>
-                        <a class="text-decoration-none" href="{% url 'plato-detail' plato_id=plato.id %}">
+                        <a class="text-decoration-none" href="{% url 'principal-detail' principal_id=principal.id %}">
                             <span class="text-primary fs-2">
                                 <i class="fa-solid fa-eye"></i>
                             </span>
                         </a>
-                        <a class="text-decoration-none" href="{% url 'plato-edit' plato_id=plato.id %}">
+                        <a class="text-decoration-none" href="{% url 'principal-edit' principal_id=principal.id %}">
                             <span class="text-warning fs-2">
                                 <i class="fa-solid fa-pencil"></i>
                             </span>
                         </a>
                         <a class="text-decoration-none" 
-                            href="{% url 'plato-delete' plato_id=plato.id %}">
+                            href="{% url 'principal-delete' principal_id=principal.id %}">
                             <span class="text-danger fs-2">
                                 <i class="fa-solid fa-trash"></i>
                             </span>

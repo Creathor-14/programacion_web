@@ -7,7 +7,7 @@ from .views import ContactoListCreateView
 
 
 router = routers.DefaultRouter()
-router.register(r'platos',views.PlatoViewSet)
+router.register(r'principales',views.PrincipalViewSet)
 
 urlpatterns=[
     path('',include(router.urls)),

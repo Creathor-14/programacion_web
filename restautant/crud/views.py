@@ -4,65 +4,65 @@ from .forms import *
 
 # Create your views here.
 def root(request):
-    return redirect('platos/')
+    return redirect('principales/')
 
-def plato_list(request):
-    context = {'platos': Plato.objects.all()}
-    return render(request,'crud/platos.html',context)
+def principal_list(request):
+    context = {'principales': Principal.objects.all()}
+    return render(request,'crud/principales.html',context)
 
-def plato_new(request):
+def principal_new(request):
     if request.method == 'POST':
-        form = PlatoForm(request.POST, request.FILES)
+        form = PrincipalForm(request.POST, request.FILES)
         if form.is_valid():
             nombre = form.cleaned_data.get('nombre')
             categoria = form.cleaned_data.get('categoria')
             precio = form.cleaned_data.get('precio')
             image = form.cleaned_data.get('image')
-            obj = Plato.objects.create(
+            obj = Principal.objects.create(
                 nombre = nombre,
                 categoria = categoria,
                 precio = precio,
                 image = image
             )
             obj.save()
-            return redirect(reverse('platos')+ '?OK')
+            return redirect(reverse('principales')+ '?OK')
         else:
-            return redirect(reverse('platos')+ '?FAIL')
+            return redirect(reverse('principales')+ '?FAIL')
     else:
-        form = PlatoForm
-    return render(request,'crud/plato-new.html',{'form':form})
+        form = PrincipalForm
+    return render(request,'crud/principal-new.html',{'form':form})
 
-def plato_update(request,plato_id):
+def principal_update(request,principal_id):
     try:
-        plato = Plato.objects.get(id = plato_id)
-        form = PlatoForm(instance=plato)
+        principal = Principal.objects.get(id = principal_id)
+        form = PrincipalForm(instance=principal)
 
         if request.method == 'POST':
-            form = PlatoForm(request.POST, request.FILES, instance=plato)
+            form = PrincipalForm(request.POST, request.FILES, instance=principal)
             if form.is_valid():
                 form.save()
-                return redirect(reverse('platos') + '?UPDATED')
+                return redirect(reverse('principales') + '?UPDATED')
             else:
-                return redirect(reverse('platos-edit') + plato_id) 
+                return redirect(reverse('principal-edit') + principal_id) 
 
         context = {'form':form}
-        return render(request,'crud/plato-edit.html',context)
+        return render(request,'crud/principal-edit.html',context)
     except:
-        return redirect(reverse('platos') + '?NO_EXISTS')
+        return redirect(reverse('principales') + '?NO_EXISTS')
 
-def plato_detail(request, plato_id):
+def principal_detail(request, principal_id):
     try:
-        plato = Plato.objects.get(id=plato_id)
-        if plato:
-            context = {'plato':plato}
-            return render(request,'crud/plato-detail.html',context)
+        principal = Principal.objects.get(id=principal_id)
+        if principal:
+            context = {'principal':principal}
+            return render(request,'crud/principal-detail.html',context)
         else:
-            return redirect(reverse('platos') + '?lala')
+            return redirect(reverse('principales') + '?lala')
     except:
-        return redirect(reverse('platos') + '?FAIL')
+        return redirect(reverse('principales') + '?FAIL')
     
-def plato_delete(request,plato_id):
-    plato = get_object_or_404(Plato, id=plato_id)
-    plato.delete()
-    return redirect(reverse('platos') + '?DELETED')
+def principal_delete(request,principal_id):
+    principal = get_object_or_404(Principal, id=principal_id)
+    principal.delete()
+    return redirect(reverse('principales') + '?DELETED')
     
