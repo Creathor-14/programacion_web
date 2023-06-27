@@ -7,6 +7,7 @@ from .views import *
 
 
 router = routers.DefaultRouter()
+router.register(r'formularios',views.ContactoListCreateView)
 #router.register(r'principales',views.PrincipalViewSet)
 #router.register(r'postres',views.PostreViewSet)
 #router.register(r'bebestibles',views.BebestibleViewSet)
