@@ -65,4 +65,133 @@ def principal_delete(request,principal_id):
     principal = get_object_or_404(Principal, id=principal_id)
     principal.delete()
     return redirect(reverse('principales') + '?DELETED')
+
+
+# Create your views here. POSTRE
+def root(request):
+    return redirect('postres/')
+
+def postre_list(request):
+    context = {'postres': Postre.objects.all()}
+    return render(request,'crud/postres.html',context)
+
+def postre_new(request):
+    if request.method == 'POST':
+        form = PostreForm(request.POST, request.FILES)
+        if form.is_valid():
+            nombre = form.cleaned_data.get('nombre')
+            categoria = form.cleaned_data.get('categoria')
+            precio = form.cleaned_data.get('precio')
+            image = form.cleaned_data.get('image')
+            obj = Postre.objects.create(
+                nombre = nombre,
+                categoria = categoria,
+                precio = precio,
+                image = image
+            )
+            obj.save()
+            return redirect(reverse('postres')+ '?OK')
+        else:
+            return redirect(reverse('postres')+ '?FAIL')
+    else:
+        form = PostreForm
+    return render(request,'crud/postre-new.html',{'form':form})
+
+def postre_update(request,postre_id):
+    try:
+        postre = Postre.objects.get(id = postre_id)
+        form = PostreForm(instance=postre)
+
+        if request.method == 'POST':
+            form = PostreForm(request.POST, request.FILES, instance=postre)
+            if form.is_valid():
+                form.save()
+                return redirect(reverse('postres') + '?UPDATED')
+            else:
+                return redirect(reverse('postre-edit') + postre_id) 
+
+        context = {'form':form}
+        return render(request,'crud/postre-edit.html',context)
+    except:
+        return redirect(reverse('postres') + '?NO_EXISTS')
+
+def postre_detail(request, postre_id):
+    try:
+        postre = Postre.objects.get(id=postre_id)
+        if postre:
+            context = {'postre':postre}
+            return render(request,'crud/postre-detail.html',context)
+        else:
+            return redirect(reverse('postres') + '?lala')
+    except:
+        return redirect(reverse('postres') + '?FAIL')
+    
+def postre_delete(request,postre_id):
+    postre = get_object_or_404(Postre, id=postre_id)
+    postre.delete()
+    return redirect(reverse('postres') + '?DELETED')
+
+# Create your views here. BEBESTIBLE
+def root(request):
+    return redirect('bebestibles/')
+
+def bebestible_list(request):
+    context = {'bebestibles': Bebestible.objects.all()}
+    return render(request,'crud/bebestibles.html',context)
+
+def bebestible_new(request):
+    if request.method == 'POST':
+        form = BebestibleForm(request.POST, request.FILES)
+        if form.is_valid():
+            nombre = form.cleaned_data.get('nombre')
+            categoria = form.cleaned_data.get('categoria')
+            precio = form.cleaned_data.get('precio')
+            image = form.cleaned_data.get('image')
+            obj = Bebestible.objects.create(
+                nombre = nombre,
+                categoria = categoria,
+                precio = precio,
+                image = image
+            )
+            obj.save()
+            return redirect(reverse('bebestibles')+ '?OK')
+        else:
+            return redirect(reverse('bebestibles')+ '?FAIL')
+    else:
+        form = BebestibleForm
+    return render(request,'crud/bebestible-new.html',{'form':form})
+
+def bebestible_update(request,bebestible_id):
+    try:
+        bebestible = Bebestible.objects.get(id = bebestible_id)
+        form = BebestibleForm(instance=bebestible)
+
+        if request.method == 'POST':
+            form = BebestibleForm(request.POST, request.FILES, instance=bebestible)
+            if form.is_valid():
+                form.save()
+                return redirect(reverse('bebestibles') + '?UPDATED')
+            else:
+                return redirect(reverse('bebestible-edit') + bebestible_id) 
+
+        context = {'form':form}
+        return render(request,'crud/bebestible-edit.html',context)
+    except:
+        return redirect(reverse('bebestibles') + '?NO_EXISTS')
+
+def bebestible_detail(request, bebestible_id):
+    try:
+        bebestible = Bebestible.objects.get(id=bebestible_id)
+        if bebestible:
+            context = {'bebestible':bebestible}
+            return render(request,'crud/bebestible-detail.html',context)
+        else:
+            return redirect(reverse('bebestibles') + '?lala')
+    except:
+        return redirect(reverse('bebestibles') + '?FAIL')
+    
+def bebestible_delete(request,bebestible_id):
+    bebestible = get_object_or_404(Bebestible, id=bebestible_id)
+    bebestible.delete()
+    return redirect(reverse('bebestibles') + '?DELETED')
     

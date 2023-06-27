@@ -1,0 +1,105 @@
+{% extends 'crud/base.html' %}
+
+{% load static %}
+
+{% block title %}Bebestibles{% endblock %}
+
+{% block content %}
+<div class="container my-2 p-2 bg-dark text-white text-center rounded">
+    <h1>Administrador de Bebestibles</h1>
+    <a class="btn btn-outline-primary btn-lg btn-block" href="{% url 'bebestible-new' %}">Agregar Bebestible</a>
+</div>
+
+<div class="container my-2">
+    <div class="row">
+        {% if 'OK' in request.GET %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Bebestible registrado satisfactoriamente!!!</strong> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+        {% if 'FAIL' in request.GET %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Se produjo un error, y no podemos atender a tu solicitud.</strong> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+        {% if 'NO_EXISTS' in request.GET %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>No se encontró el bebestible indicado en nuestros registros.</strong> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+        {% if 'UPDATED' in request.GET %}
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            <strong>Bebestible actualizado correctamente!!!</strong> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+        {% if 'DELETED' in request.GET %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Bebestible eliminado correctamente!!!</strong> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+    </div>
+    
+</div>
+
+
+<div class="container-fluid my-2">
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Categoria</th>
+                    <th>Precio</th>
+                    <th>Imagen</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for bebestible in bebestibles %}
+                <tr>
+                    <td>{{bebestible.id}}</td>
+                    <td>{{bebestible.nombre}}</td>
+                    <td>{{bebestible.categoria}}</td>
+                    <td>{{bebestible.precio}}</td>
+                    <td>
+                        {% if bebestible.image %}
+                        <img class="img-view" src="{{bebestible.image.url}}" alt="{{bebestible.title}}">
+                        {% else%}
+                        <img class="img-view" src="{% static 'crud/img/image_not_found.jpg' %}" alt="INF">
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a class="text-decoration-none" href="{% url 'bebestible-detail' bebestible_id=bebestible.id %}">
+                            <span class="text-primary fs-2">
+                                <i class="fa-solid fa-eye"></i>
+                            </span>
+                        </a>
+                        <a class="text-decoration-none" href="{% url 'bebestible-edit' bebestible_id=bebestible.id %}">
+                            <span class="text-warning fs-2">
+                                <i class="fa-solid fa-pencil"></i>
+                            </span>
+                        </a>
+                        <a class="text-decoration-none" 
+                            href="{% url 'bebestible-delete' bebestible_id=bebestible.id %}">
+                            <span class="text-danger fs-2">
+                                <i class="fa-solid fa-trash"></i>
+                            </span>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

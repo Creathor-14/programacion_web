@@ -1,0 +1,47 @@
+{% extends 'crud/base.html' %}
+
+{% load static %}
+
+{% block title %}{{postre.id}}{% endblock %}
+
+{% block content %}
+<div class="container m-4">
+    <div class="row mb-3">
+        <h1>ID : {{postre.id}}</h1>
+    </div>
+    <div class="col-md-4">
+        {% if postre.image %}
+        <img class="img-update" src="{{postre.image.url}}" alt="{{postre.nombre}}">
+        {% else%}
+        <img class="img-update" src="{% static 'crud/img/image_not_found.jpg' %}" alt="INF">
+        {% endif %}
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <ul class="list-unstyled">
+                <li class="mb-2">Nombre: <p class="fw-bold">{{postre.nombre}}</p></li>
+                <li class="mb-2">Categoria: <p class="fw-bold">{{postre.categoria}}</p></li>
+                <li class="mb-2">Precio: <p class="fw-bold">{{postre.precio}}</p></li>
+            </ul>
+            <div class="row">
+                <div class="col-2">
+                    <a class="btn btn-outline-primary" href="{% url 'postres' %}">Volver</a>
+                </div>
+                <div class="col-2">
+                    <a class="btn btn-outline-secondary" href="{% url 'postre-edit' postre_id=postre.id %}">Editar</a>
+                </div>
+                <div class="col-2">
+                    <a class="btn btn-outline-danger" d
+                    href="{% url 'postre-delete' postre_id=postre.id %}">
+                    Eliminar
+                </a>
+                </div>
+            </div>
+        </div>        
+    </div>
+</div>
+
+
+
+{% endblock %}
+

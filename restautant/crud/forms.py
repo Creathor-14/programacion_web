@@ -50,3 +50,48 @@ class PrincipalForm(ModelForm):
             'precio':forms.TextInput(attrs={'class':'form-control'}),
             'image':forms.FileInput(attrs={'class':'form-control'})
         }
+
+
+class PostreForm(ModelForm):
+    class Meta:
+        model = Postre
+        fields = [
+            'nombre',
+            'categoria',
+            'precio',
+            'image'
+        ]
+        labels = {
+            'nombre' : 'Nombre', 
+            'categoria': 'Categoria',
+            'precio': 'Precio',
+            'image':'Imagen'
+        }
+        widgets = {
+            'nombre':forms.TextInput(attrs={'class':'form-control'}),
+            'categoria':forms.TextInput(attrs={'class':'form-control'}),
+            'precio':forms.TextInput(attrs={'class':'form-control'}),
+            'image':forms.FileInput(attrs={'class':'form-control'})
+        }
+
+class BebestibleForm(ModelForm):
+    class Meta:
+        model = Bebestible
+        fields = [
+            'nombre',
+            'categoria',
+            'precio',
+            'image'
+        ]
+        labels = {
+            'nombre' : 'Nombre', 
+            'categoria': 'Categoria',
+            'precio': 'Precio',
+            'image':'Imagen'
+        }
+        widgets = {
+            'nombre':forms.TextInput(attrs={'class':'form-control'}),
+            'categoria':forms.TextInput(attrs={'class':'form-control'}),
+            'precio':forms.TextInput(attrs={'class':'form-control'}),
+            'image':forms.FileInput(attrs={'class':'form-control'})
+        }
