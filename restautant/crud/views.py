@@ -17,11 +17,12 @@ def plato_new(request):
             nombre = form.cleaned_data.get('nombre')
             categoria = form.cleaned_data.get('categoria')
             precio = form.cleaned_data.get('precio')
-
+            image = form.cleaned_data.get('image')
             obj = Plato.objects.create(
                 nombre = nombre,
                 categoria = categoria,
                 precio = precio,
+                image = image
             )
             obj.save()
             return redirect(reverse('platos')+ '?OK')

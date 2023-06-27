@@ -35,15 +35,18 @@ class PlatoForm(ModelForm):
         fields = [
             'nombre',
             'categoria',
-            'precio'
+            'precio',
+            'image'
         ]
         labels = {
             'nombre' : 'Nombre', 
             'categoria': 'Categoria',
-            'precio': 'Precio'
+            'precio': 'Precio',
+            'image':'Imagen'
         }
         widgets = {
             'nombre':forms.TextInput(attrs={'class':'form-control'}),
             'categoria':forms.TextInput(attrs={'class':'form-control'}),
             'precio':forms.TextInput(attrs={'class':'form-control'}),
+            'image':forms.FileInput(attrs={'class':'form-control'})
         }

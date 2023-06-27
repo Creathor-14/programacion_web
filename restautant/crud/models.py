@@ -15,7 +15,10 @@ class Plato(models.Model):
     nombre=models.CharField(max_length=15)
     categoria=models.CharField(max_length=15)
     precio=models.IntegerField()
-    #imagen=models.ImageField(upload_to='productos')
+    image = models.ImageField(verbose_name='Imagen',upload_to='media/platos',null=True,blank=True)    
+    
+    class Meta:
+        ordering = ['categoria','nombre']
     def __str__(self):
         return self.nombre
 #principal, postre, bebestibles

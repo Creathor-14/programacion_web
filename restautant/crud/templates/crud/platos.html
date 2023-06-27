@@ -7,6 +7,7 @@
 {% block content %}
 <div class="container my-2 p-2 bg-dark text-white text-center rounded">
     <h1>Administrador de Platos</h1>
+    <a class="btn btn-outline-primary btn-lg btn-block" href="{% url 'plato-new' %}">Agregar Plato</a>
 </div>
 
 <div class="container my-2">
@@ -42,7 +43,9 @@
         </div>
         {% endif %}
     </div>
+    
 </div>
+
 
 <div class="container-fluid my-2">
     <div class="table-responsive">
@@ -53,6 +56,7 @@
                     <th>Nombre</th>
                     <th>Categoria</th>
                     <th>Precio</th>
+                    <th>Imagen</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -63,6 +67,13 @@
                     <td>{{plato.nombre}}</td>
                     <td>{{plato.categoria}}</td>
                     <td>{{plato.precio}}</td>
+                    <td>
+                        {% if plato.image %}
+                        <img class="img-principal" src="{{plato.image.url}}" alt="{{plato.title}}">
+                        {% else%}
+                        <img class="img-principal" src="{% static 'crud/img/image_not_found.jpg' %}" alt="INF">
+                        {% endif %}
+                    </td>
                     <td>
                         <a class="text-decoration-none" href="{% url 'plato-detail' plato_id=plato.id %}">
                             <span class="text-primary fs-2">

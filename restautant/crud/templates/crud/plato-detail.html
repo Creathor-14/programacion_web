@@ -9,14 +9,19 @@
     <div class="row mb-3">
         <h1>ID : {{plato.id}}</h1>
     </div>
+    <div class="col-md-4">
+        {% if plato.image %}
+        <img class="img-update" src="{{plato.image.url}}" alt="{{plato.nombre}}">
+        {% else%}
+        <img class="img-update" src="{% static 'crud/img/image_not_found.jpg' %}" alt="INF">
+        {% endif %}
+    </div>
     <div class="row">
         <div class="col-md-8">
             <ul class="list-unstyled">
                 <li class="mb-2">Nombre: <p class="fw-bold">{{plato.nombre}}</p></li>
                 <li class="mb-2">Categoria: <p class="fw-bold">{{plato.categoria}}</p></li>
                 <li class="mb-2">Precio: <p class="fw-bold">{{plato.precio}}</p></li>
-                <li class="mb-2 text-muted fst-italic">Registrado: {{plato.created_at}}</li>
-                <li class="mb-2 text-muted fst-italic">Última actualización: {{plato.updated_at}}</li>
             </ul>
             <div class="row">
                 <div class="col-2">
