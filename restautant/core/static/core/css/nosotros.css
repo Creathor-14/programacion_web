@@ -9,9 +9,14 @@
     --clr2: lightblue;
 }
 [nombre="Thomas"]{
-    --nombre: "Thomas<br> Quiroga";
+    --nombre: "Thomas Quiroga";
     --clr1: #32de84;
     --clr2: lightgreen;
+}
+.contenido {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
 }
 .us_card {
     position: relative;
@@ -26,6 +31,7 @@
     border-radius: 15px;
     cursor: pointer;
     overflow: hidden;
+    margin: 50px;
 }
 
 .us_card::before,

@@ -4,22 +4,52 @@
 {% block title %}PRODUCTOS{% endblock %}
 {% block extracss %}<link rel="stylesheet" href="{% static 'core/css/productos.css' %}">{%endblock %}
 {% block content %}
+<div class="container my-2 p-2  text-center rounded tipo-producto">
+    <h1>Platos principales</h1>
+</div>
 <section class="contenido">
     {% for principal in principales %}
-        <div class="product_card">
-            <div class="product_card__img">
-                {% if principal.image %}
-                    <img src="{{principal.image.url}}">
-                {% else%}
-                    <img src="{% static 'crud/img/image_not_found.jpg' %}">
-                {% endif %}
+        {% if principal.image %}
+            <div class="product_card">
+                <div class="product_card__img"><img src="{{principal.image.url}}"></div>
+                <div class="product_card__title">{{principal.nombre}} </div>
+                <div class="product_card__subtitle">{{principal.categoria}}</div>
+                <div class="product_card__price">${{principal.precio}}</div>
             </div>
-            <div class="product_card__title">{{principal.nombre}} </div>
-            <div class="product_card__subtitle">{{principal.categoria}}</div>
-            <div class="product_card__price">${{principal.precio}}</div>
-        </div>
+        {% endif %}
     {% endfor %}
 </section>
 <hr>
+<div class="container my-2 p-2  text-center rounded tipo-producto">
+    <h1>Bebestibles</h1>
+</div>
+<section class="contenido">
+    {% for bebestible in bebestibles %}
+        {% if bebestible.image %}
+            <div class="product_card">
+                <div class="product_card__img"><img src="{{bebestible.image.url}}"></div>
+                <div class="product_card__title">{{bebestible.nombre}} </div>
+                <div class="product_card__subtitle">{{bebestible.categoria}}</div>
+                <div class="product_card__price">${{bebestible.precio}}</div>
+            </div>
+        {% endif %}
+    {% endfor %}
+</section>
+<hr>
+<div class="container my-2 p-2  text-center rounded tipo-producto">
+    <h1>Postres</h1>
+</div>
+<section class="contenido">
+    {% for postre in postres %}
+        {% if postre.image %}
+            <div class="product_card">
+                <div class="product_card__img"><img src="{{postre.image.url}}"></div>
+                <div class="product_card__title">{{postre.nombre}} </div>
+                <div class="product_card__subtitle">{{postre.categoria}}</div>
+                <div class="product_card__price">${{postre.precio}}</div>
+            </div>
+        {% endif %}
+    {% endfor %}
+</section>
 
 {% endblock %}

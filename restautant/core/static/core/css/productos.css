@@ -1,10 +1,13 @@
+.tipo-producto{
+    background: var(--bg-top-bottom);
+    color: var(--text-middle);
+}
+
 .contenido {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Centra el contenido horizontalmente */
- 
+    justify-content: center; 
 }
-
 
 .product_card {
     margin: 10px;

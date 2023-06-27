@@ -5,14 +5,31 @@
 <!---------------------------------------------------------------------------------------------------------------------->
 {% block content %}
 <!---------------------------------------------------------------------------------------------------------------------->
-    
-<div class="us_card mar" nombre="Martin">
-    <img src="{% static 'core/img/mar.jpg' %}" alt="Martin-Rees">
-</div>  
-
-<div class="us_card tom" nombre="Thomas">
-    <img src="{% static 'core/img/tom.jpg' %}" alt="Thomas-Quiroga">
-</div>        
-   
+<section class="contenido">  
+    <div class="us_card mar" nombre="Martin">
+        <img src="{% static 'core/img/mar.jpg' %}" alt="Martin-Rees">
+    </div>  
+    <div class="us_card tom" nombre="Thomas">
+        <img src="{% static 'core/img/tom.jpg' %}" alt="Thomas-Quiroga">
+    </div>        
+</section>
 <!---------------------------------------------------------------------------------------------------------------------->
+
+{% endblock %}
+{% block extra_js %}
+    <script>
+        // JavaScript
+        var imagenes = document.getElementsByClassName("us_card");
+        for (var i = 0; i < imagenes.length; i++) {
+        (function(index) {
+            imagenes[index].addEventListener("click", function() {
+            if (imagenes[index].getAttribute("nombre") == "Martin") {
+                window.location.replace('https://www.linkedin.com/in/mart%C3%ADn-rees-odone-312593252/');
+            } else if (imagenes[index].getAttribute("nombre") == "Thomas") {
+                window.location.replace('https://www.linkedin.com/in/thomas-quiroga-69aa03252/');
+            }
+            });
+        })(i);
+        }
+    </script>
 {% endblock %}
