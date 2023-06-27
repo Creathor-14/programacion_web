@@ -1,13 +1,21 @@
 from rest_framework import serializers
-from crud.models import Principal
-
-from rest_framework import serializers
-from crud.models import Formulario 
+from crud.models import * 
 
 
 class PrincipalSerializer(serializers.ModelSerializer):
     class Meta:
         model = Principal
+        # fields = ("categoria","nombre")
+        fields = '__all__'
+
+class PostreSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Postre
+        fields = '__all__'
+
+class BebestibleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Bebestible
         # fields = ("categoria","nombre")
         fields = '__all__'
 

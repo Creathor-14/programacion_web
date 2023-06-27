@@ -8,6 +8,8 @@ from .views import ContactoListCreateView
 
 router = routers.DefaultRouter()
 router.register(r'principales',views.PrincipalViewSet)
+router.register(r'postres',views.PostreViewSet)
+router.register(r'bebestibles',views.BebestibleViewSet)
 
 urlpatterns=[
     path('',include(router.urls)),
