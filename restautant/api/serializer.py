@@ -16,13 +16,23 @@ class PrincipalSerializer(serializers.ModelSerializer):
 class PostreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Postre
-        fields = '__all__'
+        fields = (
+            'id',
+            'nombre',
+            'categoria',
+            'precio'
+        )
 
 class BebestibleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bebestible
         # fields = ("categoria","nombre")
-        fields = '__all__'
+        fields = (
+            'id',
+            'nombre',
+            'categoria',
+            'precio'
+        )
 
 class ContactoSerializer(serializers.ModelSerializer):
     class Meta:
