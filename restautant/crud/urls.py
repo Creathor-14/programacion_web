@@ -23,4 +23,8 @@ urlpatterns = [
     path('bebestibles/edit/<str:bebestible_id>', bebestible_update, name="bebestible-edit"),
     path('bebestibles/new/', bebestible_new, name="bebestible-new"),
     path('bebestibles/categoria/<categoria>', bebestible_by_categoria, name="bebestible-categoria"),
+
+    path('formularios/', formulario_list, name="formularios"),    
+    path('formularios/<str:formulario_id>', formulario_detail, name="formulario-detail"),
+    path('formularios/<str:formulario_id>', formulario_delete, name="formulario-delete"),
 ]

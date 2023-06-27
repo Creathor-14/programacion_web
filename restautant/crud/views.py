@@ -228,3 +228,28 @@ def bebestible_delete(request,bebestible_id):
     bebestible.delete()
     return redirect(reverse('bebestibles') + '?DELETED')
     
+
+# Create your views here. FORMULARIO
+
+def root(request):
+    return redirect('formularios/')
+
+def formulario_list(request):
+    context = {'formularios': Formulario.objects.all()}
+    return render(request,'crud/formularios.html',context)
+
+def formulario_detail(request, formulario_id):
+    try:
+        formulario = Formulario.objects.get(id=formulario_id)
+        if formulario:
+            context = {'formulario':formulario}
+            return render(request,'crud/formulario-detail.html',context)
+        else:
+            return redirect(reverse('formularios') + '?lala')
+    except:
+        return redirect(reverse('formularios') + '?FAIL')
+    
+def formulario_delete(request,formulario_id):
+    formulario = get_object_or_404(Formulario, id=formulario_id)
+    formulario.delete()
+    return redirect(reverse('formularios') + '?DELETED')
