@@ -29,26 +29,15 @@
                     <td>{{formulario.id}}</td>
                     <td>{{formulario.nombre}} {{formulario.paterno}} {{formulario.materno}}</td>
                     <td>{{formulario.email}}</td>
-                    <td> 
-
-                        <div style="display: inline-block;
-                        white-space: pre-wrap;
-                        word-wrap: break-word;">
-                            {{ formulario.comentarios }}
-                        </div>
-                          
+                    <td>
+                        <div class="elementoComentario">{{ formulario.comentarios }}</div>
                     </td>
-
-
-                   
-                   
                     <td>
                         <a class="text-decoration-none" href="{% url 'formulario-detail' formulario_id=formulario.id %}">
                             <span class="text-primary fs-2">
                                 <i class="fa-solid fa-eye"></i>
                             </span>
                         </a>
-                       
                         <a class="text-decoration-none" 
                             href="{% url 'formulario-delete' formulario_id=formulario.id %}">
                             <span class="text-danger fs-2">
@@ -66,4 +55,25 @@
 
 
 
+{% endblock %}
+{% block extra_js %}
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            var elementos = document.getElementsByClassName('elementoComentario');
+            for (var j = 0; j < elementos.length; j++) {
+                var elemento = elementos[j];
+                var texto = elemento.innerHTML;
+                var textoTruncado = texto.substring(0, 50);
+
+                if (texto.length > 50) {
+                    textoTruncado += '...';
+                }
+                var textoFormateado = '';
+                for (var i = 0; i < textoTruncado.length; i += 100) {
+                    textoFormateado += textoTruncado.substring(i, i + 100) + '<br>';
+                }
+                elemento.innerHTML = textoFormateado;
+            }
+        });
+    </script>
 {% endblock %}

@@ -238,6 +238,7 @@ def formulario_list(request):
     context = {'formularios': Formulario.objects.all()}
     return render(request,'crud/formularios.html',context)
 
+
 def formulario_detail(request, formulario_id):
     try:
         formulario = Formulario.objects.get(id=formulario_id)
