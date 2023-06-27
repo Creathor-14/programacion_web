@@ -6,8 +6,8 @@ class datosFormulario(admin.ModelAdmin):
     list_display = ['nombre', 'paterno', 'materno', 'rut', 'email', 'comentarios']
     search_fields = ['nombre', 'rut', 'email']
 
-class filtrarPrincipales(admin.ModelAdmin):
+class filtrarPrincipal(admin.ModelAdmin):
     list_filter=("categoria",)
 
 admin.site.register(Formulario,datosFormulario)
-admin.site.register(Principal,filtrarPrincipales)
+admin.site.register(Principal,filtrarPrincipal)
