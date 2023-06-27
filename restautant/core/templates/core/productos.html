@@ -5,57 +5,21 @@
 {% block extracss %}<link rel="stylesheet" href="{% static 'core/css/productos.css' %}">{%endblock %}
 {% block content %}
 <section class="contenido">
-    <div class="product_card">
-        <div class="product_card__img">
-            <img src="{% static 'core/img/lasagna.jpeg' %}" alt="" srcset="">
+    {% for principal in principales %}
+        <div class="product_card">
+            <div class="product_card__img">
+                {% if principal.image %}
+                    <img src="{{principal.image.url}}">
+                {% else%}
+                    <img src="{% static 'crud/img/image_not_found.jpg' %}">
+                {% endif %}
             </div>
-        <div class="product_card__title">NOMBRE </div>
-        <div class="product_card__subtitle">CATEGORIA</div>
-        <div class="product_card__price">$PRECIO</div>
-    </div>
-
-    <div class="product_card">
-        <div class="product_card__img">
-            <img src="{% static 'core/img/pizza.jpeg' %}" alt="" srcset="">
-            </div>
-        <div class="product_card__title">NOMBRE </div>
-        <div class="product_card__subtitle">CATEGORIA</div>
-        <div class="product_card__price">$PRECIO</div>
-    </div>
-
-    <div class="product_card">
-        <div class="product_card__img">
-            <img src="{% static 'core/img/lasagna.jpeg' %}" alt="" srcset="">
-            </div>
-        <div class="product_card__title">NOMBRE </div>
-        <div class="product_card__subtitle">CATEGORIA</div>
-        <div class="product_card__price">$PRECIO</div>
-    </div>
-
-    <div class="product_card">
-        <div class="product_card__img">
-            <img src="{% static 'core/img/pizza.jpeg' %}" alt="" srcset="">
-            </div>
-        <div class="product_card__title">NOMBRE </div>
-        <div class="product_card__subtitle">CATEGORIA</div>
-        <div class="product_card__price">$PRECIO</div>
-    </div>
-    <div class="product_card">
-        <div class="product_card__img">
-            <img src="{% static 'core/img/lasagna.jpeg' %}" alt="" srcset="">
-            </div>
-        <div class="product_card__title">NOMBRE </div>
-        <div class="product_card__subtitle">CATEGORIA</div>
-        <div class="product_card__price">$PRECIO</div>
-    </div>
-
-    <div class="product_card">
-        <div class="product_card__img">
-            <img src="{% static 'core/img/pizza.jpeg' %}" alt="" srcset="">
-            </div>
-        <div class="product_card__title">NOMBRE </div>
-        <div class="product_card__subtitle">CATEGORIA</div>
-        <div class="product_card__price">$PRECIO</div>
-    </div>
+            <div class="product_card__title">{{principal.nombre}} </div>
+            <div class="product_card__subtitle">{{principal.categoria}}</div>
+            <div class="product_card__price">${{principal.precio}}</div>
+        </div>
+    {% endfor %}
 </section>
+<hr>
+
 {% endblock %}

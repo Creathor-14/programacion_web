@@ -23,7 +23,8 @@ def chistes(request):
     return render(request,'core/chistes.html')
 
 def productos(request):
-    return render(request,'core/productos.html')
+    context = {'principales': Principal.objects.all()}
+    return render(request,'core/productos.html',context)
 
 def contact_view(request):
     if request.method == 'POST':
