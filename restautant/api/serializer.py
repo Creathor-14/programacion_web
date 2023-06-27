@@ -6,7 +6,12 @@ class PrincipalSerializer(serializers.ModelSerializer):
     class Meta:
         model = Principal
         # fields = ("categoria","nombre")
-        fields = '__all__'
+        fields = (
+            'id',
+            'nombre',
+            'categoria',
+            'precio'
+        )
 
 class PostreSerializer(serializers.ModelSerializer):
     class Meta:

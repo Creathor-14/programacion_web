@@ -18,6 +18,8 @@ class Principal(models.Model):
     image = models.ImageField(verbose_name='Imagen',upload_to='media/principal',null=True,blank=True)    
     
     class Meta:
+        verbose_name = 'principal'
+        verbose_name_plural = 'principales'
         ordering = ['categoria','nombre']
     def __str__(self):
         return self.nombre
