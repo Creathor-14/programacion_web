@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "crud",
     "rest_framework",
     "api",
+    "login_app",# pip install bcrypt
 ]
 
 MIDDLEWARE = [

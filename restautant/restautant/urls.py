@@ -20,6 +20,7 @@ from django.conf import settings
 from rest_framework.documentation import include_docs_urls
 
 urlpatterns = [
+    #path('crud/', include('login_app.urls')),
     path('', include('core.urls')),
     path('admin/', admin.site.urls),
     path('api/',include('api.urls')),
