@@ -50,8 +50,7 @@ def contact_view(request):
             )
             obj.save()
             # Redirigir a otra página o mostrar un mensaje de éxito
-            return redirect(reverse('contacto'))
-            
+            return redirect(reverse('contacto'))         
     else:
         form = Formulario()
     

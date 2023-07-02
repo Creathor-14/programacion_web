@@ -11,5 +11,4 @@ urlpatterns = [
     path('chistes/', chistes, name='chistes'),
     path('productos/', productos, name='productos'),
     path('contact/', contact_view, name='contact'),
-    
 ]
