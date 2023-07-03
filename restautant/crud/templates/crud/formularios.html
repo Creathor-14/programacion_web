@@ -5,10 +5,13 @@
 {% block title %}Formularios{% endblock %}
 
 {% block content %}
-<div class="container my-2 p-2 bg-dark text-white text-center rounded">
-    <h1>Administrador de Formularios</h1>
-    <h1>Bienvenido {{request.session.usuario.nombre}} {{request.session.usuario.apellido}}</h1>
-</div>
+
+{% if request.session.usuario.rol == 'ADMIN' %}
+    <div class="container my-2 p-2 bg-dark text-white text-center rounded">
+        <h1>Administrador de Formularios</h1>
+        <h1>Bienvenido {{request.session.usuario.nombre}} {{request.session.usuario.apellido}}</h1>
+    </div>
+{% endif %}
 
 
 
@@ -39,12 +42,15 @@
                                 <i class="fa-solid fa-eye"></i>
                             </span>
                         </a>
-                        <a class="text-decoration-none" 
-                            href="{% url 'formulario-delete' formulario_id=formulario.id %}">
-                            <span class="text-danger fs-2">
-                                <i class="fa-solid fa-trash"></i>
-                            </span>
-                        </a>
+
+                        {% if request.session.usuario.rol == 'ADMIN' %}
+                            <a class="text-decoration-none" 
+                                href="{% url 'formulario-delete' formulario_id=formulario.id %}">
+                                <span class="text-danger fs-2">
+                                    <i class="fa-solid fa-trash"></i>
+                                </span>
+                            </a>
+                        {% endif %}
                     </td>
                 </tr>
                 {% endfor %}

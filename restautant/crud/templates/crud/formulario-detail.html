@@ -27,12 +27,14 @@
         <div class="col-2">
             <a class="btn btn-outline-primary" href="{% url 'formularios' %}">Volver</a>
         </div>
-        <div class="col-2">
-            <a class="btn btn-outline-danger" d
-            href="{% url 'formulario-delete' formulario_id=formulario.id %}">
-            Eliminar
-        </a>
-        </div>
+        {% if request.session.usuario.rol == 'ADMIN' %}
+            <div class="col-2">
+                <a class="btn btn-outline-danger" d
+                href="{% url 'formulario-delete' formulario_id=formulario.id %}">
+                Eliminar
+            </a>
+            </div>
+        {% endif %}
     </div>
 </div>
 

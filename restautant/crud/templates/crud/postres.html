@@ -5,10 +5,13 @@
 {% block title %}Postres{% endblock %}
 
 {% block content %}
-<div class="container my-2 p-2 bg-dark text-white text-center rounded">
-    <h1>Administrador de Postres</h1>
-    <a class="btn btn-outline-primary btn-lg btn-block" href="{% url 'postre-new' %}">Agregar Postre</a>
-</div>
+
+{% if request.session.usuario.rol == 'ADMIN' %}
+    <div class="container my-2 p-2 bg-dark text-white text-center rounded">
+        <h1>Administrador de Postres</h1>
+        <a class="btn btn-outline-primary btn-lg btn-block" href="{% url 'postre-new' %}">Agregar Postre</a>
+    </div>
+{% endif %}
 
 <div class="container my-2">
     <div class="row">
@@ -82,17 +85,24 @@
                                 <i class="fa-solid fa-eye"></i>
                             </span>
                         </a>
-                        <a class="text-decoration-none" href="{% url 'postre-edit' postre_id=postre.id %}">
-                            <span class="text-warning fs-2">
-                                <i class="fa-solid fa-pencil"></i>
-                            </span>
-                        </a>
-                        <a class="text-decoration-none" 
-                            href="{% url 'postre-delete' postre_id=postre.id %}">
-                            <span class="text-danger fs-2">
-                                <i class="fa-solid fa-trash"></i>
-                            </span>
-                        </a>
+
+                        {% if request.session.usuario.rol == 'ADMIN' %}
+                            <a class="text-decoration-none" href="{% url 'postre-edit' postre_id=postre.id %}">
+                                <span class="text-warning fs-2">
+                                    <i class="fa-solid fa-pencil"></i>
+                                </span>
+                            </a>
+                        {% endif %}
+
+                        {% if request.session.usuario.rol == 'ADMIN' %}
+                            <a class="text-decoration-none" 
+                                href="{% url 'postre-delete' postre_id=postre.id %}">
+                                <span class="text-danger fs-2">
+                                    <i class="fa-solid fa-trash"></i>
+                                </span>
+                            </a>
+                        {% endif %}
+
                     </td>
                 </tr>
                 {% endfor %}

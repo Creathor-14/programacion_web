@@ -11,6 +11,8 @@ def root(request):
     return redirect('formularios/')
 
 def principal_list(request):
+    if 'usuario' not in request.session:
+        return redirect("/sesion/")
     
     context = {'principales': Principal.objects.all()}
     return render(request,'crud/principales.html',context)
@@ -28,6 +30,9 @@ def principal_by_categoria(request, categoria):
         return redirect(reverse('principales') + '?FAIL')
 
 def principal_new(request):
+    if 'usuario' not in request.session:
+        return redirect("/sesion/")
+    
     if request.method == 'POST':
         form = PrincipalForm(request.POST, request.FILES)
         if form.is_valid():
@@ -50,6 +55,9 @@ def principal_new(request):
     return render(request,'crud/principal-new.html',{'form':form})
 
 def principal_update(request,principal_id):
+    if 'usuario' not in request.session:
+        return redirect("/sesion/")
+    
     try:
         principal = Principal.objects.get(id = principal_id)
         form = PrincipalForm(instance=principal)
@@ -68,6 +76,9 @@ def principal_update(request,principal_id):
         return redirect(reverse('principales') + '?NO_EXISTS')
 
 def principal_detail(request, principal_id):
+    if 'usuario' not in request.session:
+        return redirect("/sesion/")
+    
     try:
         principal = Principal.objects.get(id=principal_id)
         if principal:
@@ -87,6 +98,8 @@ def principal_delete(request,principal_id):
 
 
 def postre_list(request):
+    if 'usuario' not in request.session:
+        return redirect("/sesion/")
     context = {'postres': Postre.objects.all()}
     return render(request,'crud/postres.html',context)
 
@@ -102,6 +115,8 @@ def postre_by_categoria(request, categoria):
         return redirect(reverse('postres') + '?FAIL')
 
 def postre_new(request):
+    if 'usuario' not in request.session:
+        return redirect("/sesion/")
     if request.method == 'POST':
         form = PostreForm(request.POST, request.FILES)
         if form.is_valid():
@@ -124,6 +139,8 @@ def postre_new(request):
     return render(request,'crud/postre-new.html',{'form':form})
 
 def postre_update(request,postre_id):
+    if 'usuario' not in request.session:
+        return redirect("/sesion/")
     try:
         postre = Postre.objects.get(id = postre_id)
         form = PostreForm(instance=postre)
@@ -142,6 +159,8 @@ def postre_update(request,postre_id):
         return redirect(reverse('postres') + '?NO_EXISTS')
 
 def postre_detail(request, postre_id):
+    if 'usuario' not in request.session:
+        return redirect("/sesion/")
     try:
         postre = Postre.objects.get(id=postre_id)
         if postre:
@@ -159,6 +178,8 @@ def postre_delete(request,postre_id):
 
 
 def bebestible_list(request):
+    if 'usuario' not in request.session:
+        return redirect("/sesion/")
     context = {'bebestibles': Bebestible.objects.all()}
     return render(request,'crud/bebestibles.html',context)
 
@@ -174,6 +195,9 @@ def bebestible_by_categoria(request, categoria):
         return redirect(reverse('bebestibles') + '?FAIL')
 
 def bebestible_new(request):
+    if 'usuario' not in request.session:
+        return redirect("/sesion/")
+    
     if request.method == 'POST':
         form = BebestibleForm(request.POST, request.FILES)
         if form.is_valid():
@@ -196,6 +220,8 @@ def bebestible_new(request):
     return render(request,'crud/bebestible-new.html',{'form':form})
 
 def bebestible_update(request,bebestible_id):
+    if 'usuario' not in request.session:
+        return redirect("/sesion/")
     try:
         bebestible = Bebestible.objects.get(id = bebestible_id)
         form = BebestibleForm(instance=bebestible)
@@ -214,6 +240,8 @@ def bebestible_update(request,bebestible_id):
         return redirect(reverse('bebestibles') + '?NO_EXISTS')
 
 def bebestible_detail(request, bebestible_id):
+    if 'usuario' not in request.session:
+        return redirect("/sesion/")
     try:
         bebestible = Bebestible.objects.get(id=bebestible_id)
         if bebestible:
@@ -235,11 +263,15 @@ def bebestible_delete(request,bebestible_id):
 
 
 def formulario_list(request):
+    if 'usuario' not in request.session:
+        return redirect("/sesion/")
     context = {'formularios': Formulario.objects.all()}
     return render(request,'crud/formularios.html',context)
 
 
 def formulario_detail(request, formulario_id):
+    if 'usuario' not in request.session:
+        return redirect("/sesion/")
     try:
         formulario = Formulario.objects.get(id=formulario_id)
         if formulario:

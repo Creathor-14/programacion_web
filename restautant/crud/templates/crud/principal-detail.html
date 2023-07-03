@@ -30,12 +30,14 @@
                 <div class="col-2">
                     <a class="btn btn-outline-secondary" href="{% url 'principal-edit' principal_id=principal.id %}">Editar</a>
                 </div>
-                <div class="col-2">
-                    <a class="btn btn-outline-danger" d
-                    href="{% url 'principal-delete' principal_id=principal.id %}">
-                    Eliminar
-                </a>
-                </div>
+                {% if request.session.usuario.rol == 'ADMIN' %}
+                    <div class="col-2">
+                        <a class="btn btn-outline-danger" d
+                        href="{% url 'principal-delete' principal_id=principal.id %}">
+                        Eliminar
+                    </a>
+                    </div>
+                {% endif %}
             </div>
         </div>        
     </div>
