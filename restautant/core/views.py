@@ -56,3 +56,4 @@ def contact_view(request):
     
     context = {'form': form}
     return render(request, 'core/contact_form.html', context)
+

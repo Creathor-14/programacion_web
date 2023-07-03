@@ -79,3 +79,9 @@ def login(request):
             else:
                 messages.error(request,"Datos mal ingresados o el usuario no existe!!!")
                 return redirect('/errorUsuario')
+            
+def logout(request):
+    if 'usuario' in request.session:
+        del request.session['usuario']
+    
+    return redirect('/')
