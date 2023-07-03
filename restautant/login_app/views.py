@@ -48,3 +48,34 @@ def register(request):
             return render(request,'login_app/login.html')
 
         return render(request, 'login_app/login.html')
+    
+def login(request):
+    if request.method == 'GET':
+        return render(request,'login_app/login.html')
+    else:
+        if request.method == 'POST':
+            
+            user = Usuario.objects.filter(email=request.POST['email_login']) #Buscamos el correo ingresado en la BD             
+            
+            if user : #Si el usuario existe
+
+                usuario_registrado = user[0]
+                
+                if bcrypt.checkpw(request.POST['password_login'].encode(), usuario_registrado.clave.encode()): 
+                    usuario = {
+                        'id':usuario_registrado.id,
+                        'nombre':usuario_registrado.nombre,
+                        'apellido':usuario_registrado.apellido,
+                        'email':usuario_registrado.email,
+                        'rol':usuario_registrado.rol,
+                    }
+
+                    request.session['usuario'] = usuario
+                    messages.success(request,"Ingreso correcto!!!!")
+                    return redirect('/crud/')
+                else:
+                    messages.error(request,"Datos mal ingresados o el usuario no existe!!!")
+                    return redirect('/errorContraseña')
+            else:
+                messages.error(request,"Datos mal ingresados o el usuario no existe!!!")
+                return redirect('/errorUsuario')

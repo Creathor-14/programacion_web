@@ -3,8 +3,7 @@ from .models import *
 from .forms import *
 
 # Create your views here.
-def root(request):
-    return redirect('principales/')
+
 
 def principal_list(request):
     context = {'principales': Principal.objects.all()}
@@ -78,9 +77,7 @@ def principal_delete(request,principal_id):
     return redirect(reverse('principales') + '?DELETED')
 
 
-# Create your views here. POSTRE
-def root(request):
-    return redirect('postres/')
+
 
 def postre_list(request):
     context = {'postres': Postre.objects.all()}
@@ -153,9 +150,6 @@ def postre_delete(request,postre_id):
     postre.delete()
     return redirect(reverse('postres') + '?DELETED')
 
-# Create your views here. BEBESTIBLE
-def root(request):
-    return redirect('bebestibles/')
 
 def bebestible_list(request):
     context = {'bebestibles': Bebestible.objects.all()}

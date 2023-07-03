@@ -4,18 +4,20 @@
   <link rel="stylesheet" href="{% static 'login_app/css/box.css' %}">
 {%endblock %}
 {% block content %}
-<form action="">
+<form action="{% url 'login' %}" method="POST">
+  {% csrf_token %}
   <div class="user-box">
-    <input type="text" name="" required="">
+    <input type="email" name="email_login" id="email_login" required="">
     <label>Email</label>
   </div>
   <div class="user-box">
-    <input type="password" name="" required="">
+    <input type="password" name="password_login" id="password_login" required="">
     <label>Contraseña</label>
   </div>
   <div class="center-wrapper">
     <a href="#">Acceder<span></span></a>
     <a href="{% url 'register' %}" id="registrarse">Registrate<span></span></a>
   </div>
+  <input class="btn btn-primary" type="submit" value="Login">
 </form>
 {% endblock %}
