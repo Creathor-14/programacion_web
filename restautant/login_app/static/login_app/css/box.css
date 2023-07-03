@@ -112,7 +112,7 @@
     background: linear-gradient(90deg, transparent, #03f40f);
     animation: btn-anim1 2s linear infinite;
   }
-  .login-box #registrarse span:nth-child(1) {
+  .login-box .registrarse span:nth-child(1) {
     bottom: 2px;
     left: -100%;
     width: 100%;

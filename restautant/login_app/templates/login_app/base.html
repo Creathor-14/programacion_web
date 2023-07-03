@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es-Cl">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'login_app/css/background.css' %}">
+  {% block extracss %}{%endblock %}
+</head>
+<body>
+  <div id="square"></div>
+  <div id="tiles"></div>
+  <main>
+    <div class="login-box">
+      <div class="center-container">
+      <img src="{% static 'core/img/Logo-final.png' %}" alt="RESTAURANT">
+      </div>
+      <form>
+        {% block content %}{% endblock %}
+      </form>
+    </div>
+  </main>
+  <script src="{% static 'login_app/js/background.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{% extends 'login_app/base.html' %}
+{% load static %}
+{% block extracss %}
+  <link rel="stylesheet" href="{% static 'login_app/css/box.css' %}">
+{%endblock %}
+{% block content %}
+<div class="center-wrapper">
+  <div class="user-box">
+    <input type="text" name="" required="">
+    <label>Nombre</label>
+  </div>
+  <div class="user-box">
+    <input type="text" name="" required="">
+    <label>Apellido</label>
+  </div>
+</div>
+<div class="user-box">
+  <input type="text" name="" required="">
+  <label>Nombre De Usuario</label>
+</div>
+
+<div class="user-box">
+  <input type="password" name="" required="">
+  <label>Nueva Contraseña</label>
+</div>
+
+
+<div class="center-container">
+  <a href="#" id="registrarse">Registrame<span></span></a>
+</div>
+{% endblock %}

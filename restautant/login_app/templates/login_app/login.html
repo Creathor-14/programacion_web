@@ -1,20 +1,19 @@
-<!DOCTYPE html>
-<html lang="es-Cl">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'login_app/css/background.css' %}">
-  {% block extracss %}{%endblock %}
-</head>
-<body>
-  <div id="square"></div>
-  <div id="tiles"></div>
-  <main>
-    {% block content %}{% endblock %}
-  </main>
-  <script src="{% static 'login_app/js/background.js' %}"></script>
-</body>
-</html>
+{% extends 'login_app/base.html' %}
+{% load static %}
+{% block extracss %}
+  <link rel="stylesheet" href="{% static 'login_app/css/box.css' %}">
+{%endblock %}
+{% block content %}
+<div class="user-box">
+  <input type="text" name="" required="">
+  <label>Usuario</label>
+</div>
+<div class="user-box">
+  <input type="password" name="" required="">
+  <label>Contraseña</label>
+</div>
+<div class="center-wrapper">
+  <a href="#">Acceder<span></span></a>
+  <a href="{% url 'register' %}" id="registrarse">Registrate<span></span></a>
+</div>
+{% endblock %}
