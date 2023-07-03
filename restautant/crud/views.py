@@ -4,6 +4,11 @@ from .forms import *
 
 # Create your views here.
 
+def root(request):
+    if 'usuario' not in request.session:
+        return redirect("/seccion/")
+
+    return redirect('formularios/')
 
 def principal_list(request):
     context = {'principales': Principal.objects.all()}
@@ -225,8 +230,7 @@ def bebestible_delete(request,bebestible_id):
 
 # Create your views here. FORMULARIO
 
-def root(request):
-    return redirect('formularios/')
+
 
 def formulario_list(request):
     context = {'formularios': Formulario.objects.all()}

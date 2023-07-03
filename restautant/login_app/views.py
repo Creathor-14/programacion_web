@@ -5,6 +5,8 @@ import bcrypt
 # Create your views here.
 
 def root(request):
+    if 'usuario' in request.session:
+        return redirect("/crud/")
     return redirect('login/')
 
 def login(request):
