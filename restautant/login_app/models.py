@@ -12,7 +12,7 @@ class UserManager(models.Manager):
 
         errores = {}
 
-        if len(User.objects.filter(email=postData['email'])) > 0:
+        if len(Usuario.objects.filter(email=postData['email'])) > 0:
             errores['email_exits'] = "Email ya registrado!!!"
         else:
             if len(postData['nombre'].strip()) < 2 or len(postData['nombre'].strip()) > 30:
@@ -33,8 +33,8 @@ class UserManager(models.Manager):
         #if len(postData['clave']) < 8 or len(postData['clave']) > 15:
         #    errores['clave_len'] = "La cantidad de caracteres debe ser entre 8 y 15" 
 
-        if postData['clave'] != postData['clave_confirm']:
-            errores['clave_confirm'] = "Contraseñas no coinciden"
+        #if postData['clave'] != postData['clave_confirm']:
+        #    errores['clave_confirm'] = "Contraseñas no coinciden"
 
         return errores
 

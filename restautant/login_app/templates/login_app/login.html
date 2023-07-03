@@ -4,16 +4,18 @@
   <link rel="stylesheet" href="{% static 'login_app/css/box.css' %}">
 {%endblock %}
 {% block content %}
-<div class="user-box">
-  <input type="text" name="" required="">
-  <label>Correo</label>
-</div>
-<div class="user-box">
-  <input type="password" name="" required="">
-  <label>Contraseña</label>
-</div>
-<div class="center-wrapper">
-  <a href="#">Acceder<span></span></a>
-  <a href="{% url 'register' %}" id="registrarse">Registrate<span></span></a>
-</div>
+<form action="">
+  <div class="user-box">
+    <input type="text" name="" required="">
+    <label>Email</label>
+  </div>
+  <div class="user-box">
+    <input type="password" name="" required="">
+    <label>Contraseña</label>
+  </div>
+  <div class="center-wrapper">
+    <a href="#">Acceder<span></span></a>
+    <a href="{% url 'register' %}" id="registrarse">Registrate<span></span></a>
+  </div>
+</form>
 {% endblock %}

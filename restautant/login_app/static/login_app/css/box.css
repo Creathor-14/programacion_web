@@ -125,3 +125,35 @@
     display: flex;
     gap:10px;
   }
+
+.btn-link{
+  background-color: red;
+}
+
+
+  .login-box form .btn-link {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #ffffff;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 40px;
+  letter-spacing: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.login-box form .btn-link:hover {
+  background: #1303f4;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #1303f4,
+              0 0 25px #1303f4,
+              0 0 50px #1303f4,
+              0 0 100px #1303f4;
+}

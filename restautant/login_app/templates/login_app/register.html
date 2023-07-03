@@ -4,28 +4,33 @@
   <link rel="stylesheet" href="{% static 'login_app/css/box.css' %}">
 {%endblock %}
 {% block content %}
-<div class="center-wrapper">
+<form action="{% url 'register' %}" method="POST">
+  {% csrf_token %}
   <div class="user-box">
-    <input type="text" name="" required="">
+    <input id="nombre" type="text" name="nombre" required>
     <label>Nombre</label>
   </div>
   <div class="user-box">
-    <input type="text" name="" required="">
+    <input id="apellido" type="text" name="apellido" required>
     <label>Apellido</label>
   </div>
-</div>
-<div class="user-box">
-  <input type="text" name="" required="">
-  <label>Correo</label>
-</div>
+  <div class="center-wrapper">
+    
+  </div>
+  <div class="user-box">
+    <input id="email" type="email" name="email" required>
+    <label>Email</label>
+  </div>
 
-<div class="user-box">
-  <input type="password" name="" required="">
-  <label>Nueva Contraseña</label>
-</div>
+  <div class="user-box">
+    <input id="clave" type="password" name="clave" required>
+    <label>Nueva Contraseña</label>
+  </div>
 
-
-<div class="center-container">
-  <a href="#" id="registrarse">Registrame<span></span></a>
-</div>
+  <div class="center-container">
+    <input id="registrarse" type="submit" value="Registrame">
+    <a href="#" id="registrarse">Registrame<span></span></a>
+    <input type="submit" value="Register" class="btn-link">
+  </div>
+</form>
 {% endblock %}
