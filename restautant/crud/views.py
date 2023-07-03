@@ -6,15 +6,17 @@ from .forms import *
 
 def root(request):
     if 'usuario' not in request.session:
-        return redirect("/seccion/")
+        return redirect("/sesion/")
 
     return redirect('formularios/')
 
 def principal_list(request):
+    
     context = {'principales': Principal.objects.all()}
     return render(request,'crud/principales.html',context)
 
 def principal_by_categoria(request, categoria):
+    
     try:
         principales = Principal.objects.filter(categoria=categoria)
         if principales:
